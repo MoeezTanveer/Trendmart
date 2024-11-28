@@ -4,8 +4,8 @@ import { HomeContext } from "./";
 import { sliderImages } from "../../admin/dashboardAdmin/Action";
 import { prevSlide, nextSlide } from "./Mixins";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const Slider = (props) => {
   const { data, dispatch } = useContext(HomeContext);
   const [slide, setSlide] = useState(0);
@@ -21,7 +21,7 @@ const Slider = (props) => {
         {data.sliderImages.length > 0 ? (
           <img
             className="w-full"
-            src={`${apiURL}/uploads/customize/${data.sliderImages[slide].slideImage}`}
+            src={`${productsURL}/uploads/customize/${data.sliderImages[slide].slideImage}`}
             alt="sliderImage"
           />
         ) : (

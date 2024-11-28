@@ -4,8 +4,10 @@
   "description": "A Departmental store website.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "concurrently \"npm run start-registration-server\" \"npm run start-database-server-1\" \"npm run start-database-server-2\"",
+    "start-registration-server": "cd registration-server && node app.js",
+    "start-database-server-1": "cd database-server-1 && node app.js",
+    "start-database-server-2": "cd database-server-2 && node app.js"
   },
   "repository": {
     "type": "git"
@@ -26,5 +28,8 @@
     "multer": "^1.4.2",
     "nodemon": "^2.0.4",
     "npm": "^10.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
   }
 }
