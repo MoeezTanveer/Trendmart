@@ -1,4 +1,4 @@
-const { toTitleCase } = require("../config/function");
+const { toTitleCase } = require("../../config/function");
 const categoryModel = require("../models/categories");
 const fs = require("fs");
 

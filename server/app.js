@@ -25,15 +25,15 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 // Import Router
-const authRouter = require("./routes/auth");
-const categoryRouter = require("./routes/categories");
-const productRouter = require("./routes/products");
-const brainTreeRouter = require("./routes/braintree");
-const orderRouter = require("./routes/orders");
-const usersRouter = require("./routes/users");
-const customizeRouter = require("./routes/customize");
+const authRouter = require("./registration-server/routes/auth");
+const categoryRouter = require("./database-server-1/routes/categories");
+const productRouter = require("./database-server-1/routes/products");
+const brainTreeRouter = require("./database-server-2/routes/braintree");
+const orderRouter = require("./database-server-2/routes/orders");
+const usersRouter = require("./registration-server/routes/users");
+const customizeRouter = require("./database-server-1/routes/customize");
 // Import Auth middleware for check user login or not~
-const { loginCheck } = require("./middleware/auth");
+const { loginCheck } = require("./registration-server/middleware/auth");
 const CreateAllFolder = require("./config/uploadFolderCreateScript");
 
 /* Create All Uploads Folder if not exists | For Uploading Images */

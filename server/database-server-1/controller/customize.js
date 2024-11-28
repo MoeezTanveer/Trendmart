@@ -1,8 +1,8 @@
 const fs = require("fs");
 const categoryModel = require("../models/categories");
 const productModel = require("../models/products");
-const orderModel = require("../models/orders");
-const userModel = require("../models/users");
+const orderModel = require("../../database-server-2/models/orders");
+const userModel = require("../../registration-server/models/users");
 const customizeModel = require("../models/customize");
 
 class Customize {
@@ -15,7 +15,7 @@ class Customize {
     } catch (err) {
       console.log(err);
     }
-  }
+  } 
 
   async uploadSlideImage(req, res) {
     let image = req.file.filename;
