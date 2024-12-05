@@ -2,8 +2,8 @@ import React, { Fragment, useContext, useState, useEffect } from "react";
 import { ProductContext } from "./index";
 import { editProduct, getAllProduct } from "./FetchApi";
 import { getAllCategory } from "../categories/FetchApi";
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const EditProductModal = (props) => {
   const { data, dispatch } = useContext(ProductContext);
 
@@ -207,12 +207,12 @@ const EditProductModal = (props) => {
                 <div className="flex space-x-1">
                   <img
                     className="h-16 w-16 object-cover"
-                    src={`${apiURL}/uploads/products/${editformData.pImages[0]}`}
+                    src={`${productsURL}/uploads/products/${editformData.pImages[0]}`}
                     alt="productImage"
                   />
                   <img
                     className="h-16 w-16 object-cover"
-                    src={`${apiURL}/uploads/products/${editformData.pImages[1]}`}
+                    src={`${productsURL}/uploads/products/${editformData.pImages[1]}`}
                     alt="productImage"
                   />
                 </div>

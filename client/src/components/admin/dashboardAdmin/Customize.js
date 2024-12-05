@@ -2,8 +2,8 @@ import React, { Fragment, useContext, useEffect } from "react";
 import { DashboardContext } from "./";
 import { uploadImage, sliderImages, deleteImage } from "./Action";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const Customize = () => {
   const { data, dispatch } = useContext(DashboardContext);
 
@@ -159,7 +159,7 @@ const AllImages = () => {
               <div key={index} className="relative col-span-1 m-2 border">
                 <img
                   className="w-full md:h-32 object-center object-cover"
-                  src={`${apiURL}/uploads/customize/${item.slideImage}`}
+                  src={`${productsURL}/uploads/customize/${item.slideImage}`}
                   alt="sliderImages"
                 />
                 <span

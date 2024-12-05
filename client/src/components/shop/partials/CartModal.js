@@ -6,8 +6,8 @@ import { isAuthenticate } from "../auth/fetchApi";
 import { cartList } from "../productDetails/Mixins";
 import { subTotal, quantity, totalCost } from "./Mixins";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const CartModal = () => {
   const history = useHistory();
 
@@ -101,7 +101,7 @@ const CartModal = () => {
                       <div className="text-white flex space-x-2 my-4 items-center">
                         <img
                           className="w-16 h-16 object-cover object-center"
-                          src={`${apiURL}/uploads/products/${item.pImages[0]}`}
+                          src={`${productsURL}/uploads/products/${item.pImages[0]}`}
                           alt="cartProduct"
                         />
                         <div className="relative w-full flex flex-col">

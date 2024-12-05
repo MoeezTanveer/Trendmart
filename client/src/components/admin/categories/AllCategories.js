@@ -3,8 +3,8 @@ import { getAllCategory, deleteCategory } from "./FetchApi";
 import { CategoryContext } from "./index";
 import moment from "moment";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(CategoryContext);
   const { categories, loading } = data;
@@ -138,7 +138,7 @@ const CategoryTable = ({ category, deleteCat, editCat }) => {
         <td className="p-2 text-center">
           <img
             className="w-12 h-12 object-cover object-center"
-            src={`${apiURL}/uploads/categories/${category.cImage}`}
+            src={`${productsURL}/uploads/categories/${category.cImage}`}
             alt=""
           />
         </td>

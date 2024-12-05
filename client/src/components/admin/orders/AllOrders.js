@@ -4,8 +4,8 @@ import moment from "moment";
 import { OrderContext } from "./index";
 import { fetchData, editOrderReq, deleteOrderReq } from "./Actions";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const ordersURL = process.env.REACT_APP_ORDERS_URL;
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(OrderContext);
   const { orders, loading } = data;
@@ -100,7 +100,7 @@ const CategoryTable = ({ order, editOrder }) => {
               <span className="block flex items-center space-x-2" key={i}>
                 <img
                   className="w-8 h-8 object-cover object-center"
-                  src={`${apiURL}/uploads/products/${product.id.pImages[0]}`}
+                  src={`${ordersURL}/uploads/products/${product.id.pImages[0]}`}
                   alt="productImage"
                 />
                 <span>{product.id.pName}</span>

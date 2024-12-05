@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { wishListProducts } from "./FetchApi";
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const Product = () => {
   const history = useHistory();
   const [products, setProducts] = useState([]);
@@ -56,7 +56,7 @@ const Product = () => {
                   <img
                     onClick={(e) => history.push(`/products/${product._id}`)}
                     className="cursor-pointer md:h-20 md:w-20 object-cover object-center"
-                    src={`${apiURL}/uploads/products/${product.pImages[0]}`}
+                    src={`${productsURL}/uploads/products/${product.pImages[0]}`}
                     alt="wishListproduct"
                   />
                   <div className="text-lg md:ml-6 truncate">

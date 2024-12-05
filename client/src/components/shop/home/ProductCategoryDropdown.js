@@ -5,8 +5,8 @@ import { getAllCategory } from "../../admin/categories/FetchApi";
 import { getAllProduct, productByPrice } from "../../admin/products/FetchApi";
 import "./style.css";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
+// const apiURL = process.env.REACT_APP_API_URL;
+const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const CategoryList = () => {
   const history = useHistory();
   const { data } = useContext(HomeContext);
@@ -42,7 +42,7 @@ const CategoryList = () => {
                   className="col-span-1 m-2 flex flex-col items-center justify-center space-y-2 cursor-pointer"
                 >
                   <img
-                    src={`${apiURL}/uploads/categories/${item.cImage}`}
+                    src={`${productsURL}/uploads/categories/${item.cImage}`}
                     alt="pic"
                   />
                   <div className="font-medium">{item.cName}</div>
