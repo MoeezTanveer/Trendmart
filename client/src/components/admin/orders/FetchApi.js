@@ -1,5 +1,6 @@
 import axios from "axios";
-const ordersURL = process.env.REACT_APP_ORDERS_URL;
+// const ordersURL = process.env.REACT_APP_ORDERS_URL;
+const ordersURL = "http://localhost:8002";
 export const getAllOrder = async () => {
   try {
     let res = await axios.get(`${ordersURL}/api/order/get-all-orders`);

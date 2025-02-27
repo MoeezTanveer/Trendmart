@@ -1,0 +1,114 @@
+GET http://localhost:8000/
+
+//                          create
+###
+GET http://localhost:8000/create?name=majid&email=majid@email.com&password=majid
+
+###
+GET http://localhost:8000/create?name=absar&email=absar@email.com&password=absar
+
+###
+GET http://localhost:8000/create?name=bilal&email=bilal@email.com&password=bilal
+
+//                          duplicate user
+###
+GET http://localhost:8000/create?name=majid&email=majid@email.com&password=majid
+
+
+//                           read all
+###
+GET http://localhost:8000/all
+
+//                          read
+###
+GET http://localhost:8000/read?email=majid@email.com
+
+
+//                          update
+###
+GET http://localhost:8000/update?name=naeem&email=majid@email.com
+
+//                          delete
+###
+GET http://localhost:8000/delete?email=majid@email.com
+
+###
+GET http://localhost:8000/all
+
+###
+GET http://localhost:8000/delete?email=absar@email.com
+
+###
+GET http://localhost:8000/all
+
+###
+GET http://localhost:8000/delete?email=bilal@email.com
+
+###
+GET http://localhost:8000/all
+
+
+
+
+### CATEGORY APIs
+
+# Create a Category
+POST http://localhost:8001/api/category/create
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "description": "Devices and gadgets"
+}
+
+### Read All Categories
+GET http://localhost:8001/api/category/all
+
+### Read a Category
+GET http://localhost:8001/api/category/read?name=Electronics
+
+### Update Category
+PUT http://localhost:8001/api/category/update
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "newName": "Tech Gadgets",
+  "description": "Updated category"
+}
+
+### Delete Category
+DELETE http://localhost:8001/api/category/delete?name=Tech Gadgets
+
+### PRODUCT APIs
+
+# Create a Product (Use a valid category ID from category API)
+POST http://localhost:8001/api/product/create
+Content-Type: application/json
+
+{
+  "name": "Smartphone",
+  "description": "Latest Android device",
+  "price": 999,
+  "category": "CATEGORY_ID_HERE",
+  "quantity": 5
+}
+
+### Read All Products
+GET http://localhost:8001/api/product/all
+
+### Read a Product
+GET http://localhost:8001/api/product/read?name=Smartphone
+
+### Update a Product
+PUT http://localhost:8001/api/product/update
+Content-Type: application/json
+
+{
+  "name": "Smartphone",
+  "newName": "Smartphone Pro",
+  "price": 1099
+}
+
+### Delete a Product
+DELETE http://localhost:8001/api/product/delete?name=Smartphone Pro

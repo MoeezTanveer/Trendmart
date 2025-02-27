@@ -2,7 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { wishListProducts } from "./FetchApi";
 // const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
 const Product = () => {
   const history = useHistory();
   const [products, setProducts] = useState([]);

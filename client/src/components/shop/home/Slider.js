@@ -5,7 +5,8 @@ import { sliderImages } from "../../admin/dashboardAdmin/Action";
 import { prevSlide, nextSlide } from "./Mixins";
 
 // const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
 const Slider = (props) => {
   const { data, dispatch } = useContext(HomeContext);
   const [slide, setSlide] = useState(0);

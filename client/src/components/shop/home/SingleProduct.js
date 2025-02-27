@@ -5,7 +5,8 @@ import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
 
 // const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
 const SingleProduct = (props) => {
   const { data, dispatch } = useContext(HomeContext);
   const { products } = data;

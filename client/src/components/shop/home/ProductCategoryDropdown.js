@@ -6,7 +6,9 @@ import { getAllProduct, productByPrice } from "../../admin/products/FetchApi";
 import "./style.css";
 
 // const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
+console.log("Products URL: ", productsURL); // Check URL in the console
 const CategoryList = () => {
   const history = useHistory();
   const { data } = useContext(HomeContext);

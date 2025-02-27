@@ -3,7 +3,8 @@ import { ProductContext } from "./index";
 import { editProduct, getAllProduct } from "./FetchApi";
 import { getAllCategory } from "../categories/FetchApi";
 // const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
 const EditProductModal = (props) => {
   const { data, dispatch } = useContext(ProductContext);
 

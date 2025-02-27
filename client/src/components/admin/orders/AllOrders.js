@@ -5,7 +5,8 @@ import { OrderContext } from "./index";
 import { fetchData, editOrderReq, deleteOrderReq } from "./Actions";
 
 // const apiURL = process.env.REACT_APP_API_URL;
-const ordersURL = process.env.REACT_APP_ORDERS_URL;
+// const ordersURL = process.env.REACT_APP_ORDERS_URL;
+const ordersURL = "http://localhost:8002";
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(OrderContext);
   const { orders, loading } = data;

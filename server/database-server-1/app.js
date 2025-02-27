@@ -20,8 +20,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/category", loginCheck, categoryRouter);  // Protected Route for categories
-app.use("/api/product", loginCheck, productRouter);    // Protected Route for products
+// app.use("/api/category", loginCheck, categoryRouter);  // Protected Route for categories
+// app.use("/api/product", loginCheck, productRouter);    // Protected Route for products
 
 // Database Connection
 mongoose.connect(process.env.DATABASE, {
@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 // Run Server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 app.listen(PORT, () => {
   console.log(`Database Server 1 is running on port ${PORT}`);
 });

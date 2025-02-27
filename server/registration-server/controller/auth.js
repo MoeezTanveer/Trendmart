@@ -70,7 +70,7 @@ class Auth {
                 name,
                 email,
                 password,
-                userRole: 0, 
+                userRole: 1, 
               });
               newUser
                 .save()

@@ -1,9 +1,8 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { DashboardContext } from "./";
 import { uploadImage, sliderImages, deleteImage } from "./Action";
-
-// const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+ 
+const productsURL = "http://localhost:8001"; 
 const Customize = () => {
   const { data, dispatch } = useContext(DashboardContext);
 

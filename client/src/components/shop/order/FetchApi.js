@@ -1,5 +1,6 @@
 import axios from "axios";
-const ordersURL = process.env.REACT_APP_ORDERS_URL;
+// const ordersURL = process.env.REACT_APP_ORDERS_URL;
+const ordersURL = "http://localhost:8002";
 export const getBrainTreeToken = async () => {
   let uId = JSON.parse(localStorage.getItem("jwt")).user._id;
   try {

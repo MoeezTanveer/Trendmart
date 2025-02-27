@@ -34,54 +34,121 @@ const AddCategoryModal = (props) => {
     }, 2000);
   }
 
+  // const submitForm = async (e) => {
+  //   dispatch({ type: "loading", payload: true });
+  //   // Reset and prevent the form
+  //   e.preventDefault();
+  //   e.target.reset();
+
+  //   if (!fData.cImage) {
+  //     dispatch({ type: "loading", payload: false });
+  //     return setFdata({ ...fData, error: "Please upload a category image" });
+  //   }
+
+  //   try {
+  //     let responseData = await createCategory(fData);
+  //     if (responseData.success) {
+  //       fetchData();
+  //       setFdata({
+  //         ...fData,
+  //         cName: "",
+  //         cDescription: "",
+  //         cImage: "",
+  //         cStatus: "Active",
+  //         success: responseData.success,
+  //         error: false,
+  //       });
+  //       dispatch({ type: "loading", payload: false });
+  //       setTimeout(() => {
+  //         setFdata({
+  //           ...fData,
+  //           cName: "",
+  //           cDescription: "",
+  //           cImage: "",
+  //           cStatus: "Active",
+  //           success: false,
+  //           error: false,
+  //         });
+  //       }, 2000);
+  //     } else if (responseData.error) {
+  //       setFdata({ ...fData, success: false, error: responseData.error });
+  //       dispatch({ type: "loading", payload: false });
+  //       setTimeout(() => {
+  //         return setFdata({ ...fData, error: false, success: false });
+  //       }, 2000);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // const submitForm = async (e) => {
+  //   dispatch({ type: "loading", payload: true });
+  //   e.preventDefault();
+  
+  //   if (!fData.cImage) {
+  //     dispatch({ type: "loading", payload: false });
+  //     return setFdata({ ...fData, error: "Please upload a category image" });
+  //   }
+  
+  //   try {
+  //     // Create FormData to handle file uploads
+  //     const formData = new FormData();
+  //     formData.append("cName", fData.cName);
+  //     formData.append("cDescription", fData.cDescription);
+  //     formData.append("cImage", fData.cImage); // Image file
+  //     formData.append("cStatus", fData.cStatus);
+  
+  //     let responseData = await createCategory(formData);
+      
+  //     if (responseData.success) {
+  //       fetchData();
+  //       setFdata({
+  //         cName: "",
+  //         cDescription: "",
+  //         cImage: "",
+  //         cStatus: "Active",
+  //         success: responseData.success,
+  //         error: false,
+  //       });
+  //     } else if (responseData.error) {
+  //       setFdata({ ...fData, success: false, error: responseData.error });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error while creating category:", error);
+  //     setFdata({ ...fData, success: false, error: "Something went wrong" });
+  //   } finally {
+  //     dispatch({ type: "loading", payload: false });
+  //   }
+  // };
   const submitForm = async (e) => {
-    dispatch({ type: "loading", payload: true });
-    // Reset and prevent the form
     e.preventDefault();
-    e.target.reset();
-
-    if (!fData.cImage) {
+    dispatch({ type: "loading", payload: true });
+  
+    if (!fData.cName || !fData.cDescription) {
       dispatch({ type: "loading", payload: false });
-      return setFdata({ ...fData, error: "Please upload a category image" });
+      return setFdata({ ...fData, error: "Category name and description are required" });
     }
-
+  
     try {
-      let responseData = await createCategory(fData);
+      let responseData = await createCategory({
+        cName: fData.cName,
+        cDescription: fData.cDescription,
+        cStatus: fData.cStatus,
+      });
+  
       if (responseData.success) {
         fetchData();
-        setFdata({
-          ...fData,
-          cName: "",
-          cDescription: "",
-          cImage: "",
-          cStatus: "Active",
-          success: responseData.success,
-          error: false,
-        });
-        dispatch({ type: "loading", payload: false });
-        setTimeout(() => {
-          setFdata({
-            ...fData,
-            cName: "",
-            cDescription: "",
-            cImage: "",
-            cStatus: "Active",
-            success: false,
-            error: false,
-          });
-        }, 2000);
-      } else if (responseData.error) {
+        setFdata({ cName: "", cDescription: "", cStatus: "Active", success: true, error: false });
+      } else {
         setFdata({ ...fData, success: false, error: responseData.error });
-        dispatch({ type: "loading", payload: false });
-        setTimeout(() => {
-          return setFdata({ ...fData, error: false, success: false });
-        }, 2000);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    } finally {
+      dispatch({ type: "loading", payload: false });
     }
   };
-
+  
   return (
     <Fragment>
       {/* Black Overlay */}

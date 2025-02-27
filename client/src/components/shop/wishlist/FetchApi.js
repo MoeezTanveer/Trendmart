@@ -1,5 +1,6 @@
 import axios from "axios";
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+const productsURL = "http://localhost:8001";
 export const wishListProducts = async () => {
   let productArray = JSON.parse(localStorage.getItem("wishList"));
   try {
