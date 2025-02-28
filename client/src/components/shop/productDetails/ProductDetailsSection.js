@@ -12,8 +12,9 @@ import { isWishReq, unWishReq, isWish } from "../home/Mixins";
 import { updateQuantity, slideImage, addToCart, cartList } from "./Mixins";
 import { totalCost } from "../partials/Mixins";
 
-// const apiURL = process.env.REACT_APP_API_URL;
-const productsURL = process.env.REACT_APP_PRODUCTS_URL;
+// // const apiURL = process.env.REACT_APP_API_URL;
+// const productsURL = process.env.REACT_APP_PRODUCTS_URL; 
+const productsURL = "http://localhost:8001";
 const ProductDetailsSection = (props) => {
   let { id } = useParams();
 

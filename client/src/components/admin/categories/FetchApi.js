@@ -1,5 +1,4 @@
 import axios from "axios";
-// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
 const productsURL = "http://localhost:8001";
 const BearerToken = () =>
   localStorage.getItem("jwt")

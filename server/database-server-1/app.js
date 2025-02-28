@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const categoryRouter = require("./routes/categories");
 const productRouter = require("./routes/products");
 const { loginCheck } = require("../registration-server/middleware/auth");
+const path = require("path");
 
 const app = express();
 
@@ -20,9 +21,10 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-// app.use("/api/category", loginCheck, categoryRouter);  // Protected Route for categories
-// app.use("/api/product", loginCheck, productRouter);    // Protected Route for products
-
+app.use("/api/category", categoryRouter);  // Protected Route for categories
+app.use("/api/product",  productRouter);    // Protected Route for products
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+// app.use("/api/category", categoryRoutes);
 // Database Connection
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,

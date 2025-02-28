@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 class Product {
+  
   // Delete Image from uploads -> products folder
   static deleteImages(images, mode) {
     var basePath =
@@ -42,58 +43,123 @@ class Product {
   }
 
   async postAddProduct(req, res) {
-    let { pName, pDescription, pPrice, pQuantity, pCategory, pOffer, pStatus } =
-      req.body;
-    let images = req.files;
-    // Validation
-    if (
-      !pName |
-      !pDescription |
-      !pPrice |
-      !pQuantity |
-      !pCategory |
-      !pOffer |
-      !pStatus
-    ) {
-      Product.deleteImages(images, "file");
-      return res.json({ error: "All filled must be required" });
-    }
-    // Validate Name and description
-    else if (pName.length > 255 || pDescription.length > 3000) {
-      Product.deleteImages(images, "file");
-      return res.json({
-        error: "Name 255 & Description must not be 3000 charecter long",
-      });
-    }
-    // Validate Images
-    else if (images.length !== 2) {
-      Product.deleteImages(images, "file");
-      return res.json({ error: "Must need to provide 2 images" });
-    } else {
-      try {
-        let allImages = [];
-        for (const img of images) {
-          allImages.push(img.filename);
-        }
-        let newProduct = new productModel({
-          pImages: allImages,
-          pName,
-          pDescription,
-          pPrice,
-          pQuantity,
-          pCategory,
-          pOffer,
-          pStatus,
-        });
-        let save = await newProduct.save();
-        if (save) {
-          return res.json({ success: "Product created successfully" });
-        }
-      } catch (err) {
-        console.log(err);
+    try {
+      let {
+        pName,
+        pDescription,
+        pPrice,
+        pQuantity,
+        pCategory,
+        pOffer,
+        pStatus,
+      } = req.body;
+      let images = req.files;
+
+      // Validate all required fields
+      if (
+        !pName ||
+        !pDescription ||
+        !pPrice ||
+        !pQuantity ||
+        !pCategory ||
+        !pOffer ||
+        !pStatus ||
+        images.length !== 2
+      ) {
+        return res.status(400).json({ error: "All fields are required and exactly 2 images must be provided" });
       }
+
+      // Ensure uploads directory exists
+      const uploadDir = path.resolve(__dirname, "../../public/uploads/products");
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+        console.log(`✅ Created directory: ${uploadDir}`);
+      }
+
+      // Validate name and description length
+      if (pName.length > 255 || pDescription.length > 3000) {
+        return res.status(400).json({
+          error: "Product name must be <= 255 characters and description <= 3000 characters",
+        });
+      }
+
+      // Collect image filenames
+      const allImages = images.map((img) => img.filename);
+
+      // Save product to database
+      const newProduct = new productModel({
+        pImages: allImages,
+        pName,
+        pDescription,
+        pPrice,
+        pQuantity,
+        pCategory,
+        pOffer,
+        pStatus,
+      });
+
+      await newProduct.save();
+      return res.status(201).json({ success: "Product created successfully" });
+    } catch (err) {
+      console.error("❌ Error in postAddProduct:", err);
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   }
+
+
+  // async postAddProduct(req, res) {
+  //   let { pName, pDescription, pPrice, pQuantity, pCategory, pOffer, pStatus } =
+  //     req.body;
+  //   let images = req.files;
+  //   // Validation
+  //   if (
+  //     !pName |
+  //     !pDescription |
+  //     !pPrice |
+  //     !pQuantity |
+  //     !pCategory |
+  //     !pOffer |
+  //     !pStatus
+  //   ) {
+  //     Product.deleteImages(images, "file");
+  //     return res.json({ error: "All filled must be required" });
+  //   }
+  //   // Validate Name and description
+  //   else if (pName.length > 255 || pDescription.length > 3000) {
+  //     Product.deleteImages(images, "file");
+  //     return res.json({
+  //       error: "Name 255 & Description must not be 3000 charecter long",
+  //     });
+  //   }
+  //   // Validate Images
+  //   else if (images.length !== 2) {
+  //     Product.deleteImages(images, "file");
+  //     return res.json({ error: "Must need to provide 2 images" });
+  //   } else {
+  //     try {
+  //       let allImages = [];
+  //       for (const img of images) {
+  //         allImages.push(img.filename);
+  //       }
+  //       let newProduct = new productModel({
+  //         pImages: allImages,
+  //         pName,
+  //         pDescription,
+  //         pPrice,
+  //         pQuantity,
+  //         pCategory,
+  //         pOffer,
+  //         pStatus,
+  //       });
+  //       let save = await newProduct.save();
+  //       if (save) {
+  //         return res.json({ success: "Product created successfully" });
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // }
 
   async postEditProduct(req, res) {
     let {

@@ -53,7 +53,7 @@ GET http://localhost:8000/all
 ### CATEGORY APIs
 
 # Create a Category
-POST http://localhost:8001/api/category/create
+POST http://localhost:8001/api/category/add-category
 Content-Type: application/json
 
 {
@@ -62,13 +62,13 @@ Content-Type: application/json
 }
 
 ### Read All Categories
-GET http://localhost:8001/api/category/all
+GET http://localhost:8001/api/category/all-category
 
 ### Read a Category
-GET http://localhost:8001/api/category/read?name=Electronics
+GET http://localhost:8001/api/category/read?name=Groceries
 
 ### Update Category
-PUT http://localhost:8001/api/category/update
+PUT http://localhost:8001/api/category/edit-category
 Content-Type: application/json
 
 {
@@ -82,8 +82,8 @@ DELETE http://localhost:8001/api/category/delete?name=Tech Gadgets
 
 ### PRODUCT APIs
 
-# Create a Product (Use a valid category ID from category API)
-POST http://localhost:8001/api/product/create
+# Create a Product
+POST http://localhost:8001/api/product/add-product
 Content-Type: application/json
 
 {
@@ -95,20 +95,30 @@ Content-Type: application/json
 }
 
 ### Read All Products
-GET http://localhost:8001/api/product/all
+GET http://localhost:8001/api/product/all-product
 
 ### Read a Product
-GET http://localhost:8001/api/product/read?name=Smartphone
-
-### Update a Product
-PUT http://localhost:8001/api/product/update
+POST http://localhost:8001/api/product/single-product
 Content-Type: application/json
 
 {
-  "name": "Smartphone",
-  "newName": "Smartphone Pro",
+  "name": "check"
+}
+
+### Update a Product
+POST http://localhost:8001/api/product/edit-product
+Content-Type: application/json
+
+{
+  "name": "check",
+  "newName": "check2",
   "price": 1099
 }
 
 ### Delete a Product
-DELETE http://localhost:8001/api/product/delete?name=Smartphone Pro
+POST http://localhost:8001/api/product/delete-product
+Content-Type: application/json
+
+{
+  "name": "Smartphone Pro"
+}

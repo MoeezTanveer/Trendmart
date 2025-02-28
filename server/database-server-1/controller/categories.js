@@ -12,6 +12,29 @@ class Category {
     }
   }
 
+  // Get a category by name
+ getCategoryByName = async (req, res) => {
+  try {
+    const categoryName = req.query.name;
+
+    if (!categoryName) {
+      return res.status(400).json({ success: false, message: "Category name is required" });
+    }
+
+    const category = await Category.findOne({ name: categoryName });
+
+    if (!category) {
+      return res.status(404).json({ success: false, message: "Category not found" });
+    }
+
+    res.status(200).json({ success: true, category });
+  } catch (error) {
+    console.error("Error fetching category by name:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+
   async postAddCategory(req, res) {
     let { cName, cDescription, cStatus } = req.body;
 

@@ -3,9 +3,7 @@ import { getAllCategory, deleteCategory } from "./FetchApi";
 import { CategoryContext } from "./index";
 import moment from "moment";
 
-// const apiURL = process.env.REACT_APP_API_URL;
-// const productsURL = process.env.REACT_APP_PRODUCTS_URL;
-const productsURL = "http://localhost:8001";
+// const productsURL = "http://localhost:8001";
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(CategoryContext);
   const { categories, loading } = data;
@@ -80,7 +78,6 @@ const AllCategory = (props) => {
             <tr>
               <th className="px-4 py-2 border">Category</th>
               <th className="px-4 py-2 border">Description</th>
-              <th className="px-4 py-2 border">Image</th>
               <th className="px-4 py-2 border">Status</th>
               <th className="px-4 py-2 border">Created at</th>
               <th className="px-4 py-2 border">Updated at</th>
@@ -135,13 +132,6 @@ const CategoryTable = ({ category, deleteCat, editCat }) => {
           {category.cDescription.length > 30
             ? category.cDescription.slice(0, 30) + "..."
             : category.cDescription}
-        </td>
-        <td className="p-2 text-center">
-          <img
-            className="w-12 h-12 object-cover object-center"
-            src={`${productsURL}/uploads/categories/${category.cImage}`}
-            alt=""
-          />
         </td>
         <td className="p-2 text-center">
           {category.cStatus === "Active" ? (

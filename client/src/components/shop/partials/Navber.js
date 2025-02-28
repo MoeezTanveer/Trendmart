@@ -71,7 +71,7 @@ const Navber = (props) => {
             >
               Shop
             </span>
-            <span
+            {/* <span
               className="hover:bg-gray-200 px-4 py-3 rounded-lg text-white font-bold tracking-widest hover:text-gray-800 cursor-pointer"
               onClick={(e) => history.push("/blog")}
             >
@@ -82,7 +82,7 @@ const Navber = (props) => {
               onClick={(e) => history.push("/contact-us")}
             >
               Contact us
-            </span>
+            </span> */}
           </div>
           <div className="flex items-right col-span-2 lg:col-span-1 flex justify-end">
             {/*  WishList Page Button */}
