@@ -1,5 +1,5 @@
 /* This all of are helper function */
-const userModel = require("../registration-server/models/users");
+const userModel = require("../models/users");
 
 exports.toTitleCase = function (str) {
   return str.replace(/\w\S*/g, function (txt) {

@@ -7,7 +7,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth");
 const usersRouter = require("./routes/users");
 const { loginCheck } = require("./middleware/auth");
-const CreateAllFolder = require("../config/uploadFolderCreateScript");
+const CreateAllFolder = require("./config/uploadFolderCreateScript");
 const userModel = require("./models/users"); 
 
 

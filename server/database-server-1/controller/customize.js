@@ -2,7 +2,7 @@ const fs = require("fs");
 const categoryModel = require("../models/categories");
 const productModel = require("../models/products");
 const orderModel = require("../../database-server-2/models/orders");
-const userModel = require("../../registration-server/models/users");
+// const userModel = require("../../registration-server/models/users");
 const customizeModel = require("../models/customize");
 
 class Customize {
@@ -65,7 +65,7 @@ class Customize {
       let Categories = await categoryModel.find({}).count();
       let Products = await productModel.find({}).count();
       let Orders = await orderModel.find({}).count();
-      let Users = await userModel.find({}).count();
+      // let Users = await userModel.find({}).count();
       if (Categories && Products && Orders) {
         return res.json({ Categories, Products, Orders, Users });
       }
